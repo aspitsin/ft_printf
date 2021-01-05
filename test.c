@@ -2,6 +2,7 @@
 
 int main(int argc, char **argv)
 {
+    if (0 && argv && argc) return 1;
     ft_printf("Here will be a text: %s\n","Hello");
     ft_printf("Here will be a number: %d\n", 123);
     ft_printf("Here will be the percent sign: %%\n");

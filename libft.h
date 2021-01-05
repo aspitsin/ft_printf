@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 23:37:02 by xzaida            #+#    #+#             */
-/*   Updated: 2021/01/04 19:07:29 by alex             ###   ########.fr       */
+/*   Updated: 2021/01/05 18:27:25 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_itoa(int n);
 size_t	ft_strlen(const char *s);
 char	*ft_strdup(const char *s);
 void	ft_putchar_fd(char c, int fd);
-char *ft_itoa_hex(unsigned long n, int base, char sign);
+char    *ft_itoa_hex(unsigned long n, int base, char sign);
 int		ft_tolower(int c);
 
 #endif

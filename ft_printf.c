@@ -124,9 +124,17 @@ int ft_printf(const char *format, ...)
             tmp_chunk++;
             tmp_format++;
         }
-        if(!tmp_format) return 0; //TODO: vivesti na ekran tak kak nashki konec stroki 
+        if(!tmp_format)
+        {
+            buff = reset_buff(buff, chunk, NULL);
+            break;
+        } //TODO: vivesti na ekran tak kak nashki konec stroki 
         tmp_format++;
-        if(!tmp_format) return 0;
+        if(!tmp_format)
+        {
+            buff = reset_buff(buff, chunk, NULL);
+            break;
+        } //TODO: esli net nichego za procentom
         char marker = *tmp_format;
         char *param = get_next_param(marker, ap);
         //printf("chunk = %s, param = %s\n", chunk, param);
@@ -140,5 +148,4 @@ int ft_printf(const char *format, ...)
     }
     va_end(ap);
     return 0;
-    
 }
