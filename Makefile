@@ -6,7 +6,7 @@
 #    By: alex <alex@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/26 23:38:24 by xzaida            #+#    #+#              #
-#    Updated: 2021/01/05 18:56:23 by alex             ###   ########.fr        #
+#    Updated: 2021/01/05 19:14:49 by alex             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,7 @@ SRCS	= ft_printf.c \
 		ft_itoa_hex.c 	\
 		ft_tolower.c \
 		ft_split.c \
-		ft_substr.c
-
+		ft_substr.c 
 
 OBJS	= ${SRCS:.c=.o}
 CC		= gcc
