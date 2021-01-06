@@ -1,75 +1,5 @@
 #include "libft.h"
 
-char *reset_buff(char *old_buff, char *chunk, char *param)
-{
-    char *tmp_buff = old_buff;
-    char *tmp_chunk = chunk;
-    char *tmp_param = param;
-    int count = 0;
-
-    while(*tmp_buff)
-    {
-        tmp_buff++;
-        count++;
-    }
-     while(*tmp_chunk)
-    {
-        tmp_chunk++;
-        count++;
-    }
-     while(*tmp_param)
-    {
-        tmp_param++;
-        count++;
-    }
-    char *tmp_result = (char *)malloc(count + 1);
-    char *result = tmp_result;
-    while (*old_buff)
-    {
-        *tmp_result = *old_buff;
-        tmp_result++;
-        old_buff++;
-    }
-    while (*chunk)
-    {
-        *tmp_result = *chunk;
-        tmp_result++;
-        chunk++;
-    }
-    while (*param)
-    {
-        *tmp_result = *param;
-        tmp_result++;
-        param++;
-    }
-    *tmp_result = 0;
-    return result;
-}
-
-char *scan_next(char *format)
-{
-    int c = 0;
-    char *tmp_f = (char*)format;
-
-    while(*tmp_f && *tmp_f != '%')
-    { 
-        c++; 
-        tmp_f++;
-    }
-    char *buff = (char *)malloc(c + 1);
-    char *tmp_b = buff;
-    tmp_f = (char*)format;
-    while(c)
-    {
-        *tmp_b = *tmp_f;
-        tmp_b++;
-        tmp_f++;
-        c--; 
-    }
-    *tmp_b = 0;
-    return buff;
-}
-
 char *get_next_param(char marker, va_list ap)
 {
     char *tmp_char;
@@ -113,33 +43,32 @@ int ft_printf(const char *format, ...)
 {
     va_list ap;
 	va_start(ap, format);
-    char *tmp_format = (char*)format;
-    char *buff = "";
-    while(*tmp_format)
+
+    char **chunks = ft_split(format, '%');
+    char *buff;
+    char marker;
+    char *current_chunk;
+
+    if(*format == '%')
     {
-        char *chunk = scan_next(tmp_format); 
-        char *tmp_chunk = chunk;
-        while(*tmp_chunk)
-        {
-            tmp_chunk++;
-            tmp_format++;
-        }
-        if(!tmp_format)
-        {
-            buff = reset_buff(buff, chunk, NULL);
-            break;
-        } //TODO: vivesti na ekran tak kak nashki konec stroki 
-        tmp_format++;
-        if(!tmp_format)
-        {
-            buff = reset_buff(buff, chunk, NULL);
-            break;
-        } //TODO: esli net nichego za procentom
-        char marker = *tmp_format;
-        char *param = get_next_param(marker, ap);
-        //printf("chunk = %s, param = %s\n", chunk, param);
-        buff = reset_buff(buff, chunk, param);
-        tmp_format++;
+        current_chunk = *chunks; //propuskaem procent v nachale
+        marker = *current_chunk; //smotrim chto za ney
+        current_chunk++;
+        buff = ft_strjoin(get_next_param(marker, ap), current_chunk);
+        chunks++;
+    }
+    else 
+    {    
+        buff = *chunks;
+        chunks++;
+    }
+    while(*chunks){
+        current_chunk = *chunks;
+        marker = *current_chunk;
+        current_chunk++;
+        buff = ft_strjoin(buff, get_next_param(marker, ap));
+        buff = ft_strjoin(buff, current_chunk);
+        chunks++;
     }
     while(*buff)
     {

@@ -6,21 +6,22 @@
 #    By: alex <alex@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/26 23:38:24 by xzaida            #+#    #+#              #
-#    Updated: 2021/01/05 19:14:49 by alex             ###   ########.fr        #
+#    Updated: 2021/01/06 19:01:18 by alex             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= libft.a
-SRCS	= ft_printf.c \
-		ft_strlen.c \
-		ft_strdup.c \
-		ft_itoa.c  \
+SRCS	= ft_printf.c	\
+		ft_strlen.c	\
+		ft_strdup.c	\
+		ft_itoa.c	\
 		ft_putchar_fd.c	\
-		ft_itoa_hex.c 	\
-		ft_tolower.c \
-		ft_split.c \
-		ft_substr.c 
-
+		ft_itoa_hex.c	\
+		ft_tolower.c	\
+		ft_split.c		\
+		ft_substr.c 	\
+		ft_strjoin.c
+		
 OBJS	= ${SRCS:.c=.o}
 CC		= gcc
 RM		= rm -rf

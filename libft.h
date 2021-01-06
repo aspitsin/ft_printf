@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 23:37:02 by xzaida            #+#    #+#             */
-/*   Updated: 2021/01/05 19:03:50 by alex             ###   ########.fr       */
+/*   Updated: 2021/01/06 19:01:54 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ char    *ft_itoa_hex(unsigned long n, int base, char sign);
 int		ft_tolower(int c);
 char	**ft_split(char const *s, char c);
 char	*ft_substr(const char *src, unsigned int start, size_t len);
+char	*ft_strjoin(char const *str1, char const *str2);
 
 #endif
